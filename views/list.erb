@@ -10,3 +10,11 @@
     </li>
   <% end %>
 </ul>
+
+<div>
+  <p><strong>Total Cost: $<%= calculate_total_cost %></strong></p>
+</div>
+
+<% content_for :header_links do %>
+  <a href="/shop">Back to Shop Available Items</a>
+<% end %>

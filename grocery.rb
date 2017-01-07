@@ -1,5 +1,6 @@
 require "sinatra"
 require "sinatra/reloader"
+require "sinatra/content_for"
 require "tilt/erubis"
 require "erb"
 require "yaml"
@@ -12,6 +13,15 @@ end
 helpers do
   def formatted_price(price)
     sprintf('%.2f', price)
+  end
+
+  def calculate_total_cost
+    total = 0
+    @list.each do |item|
+      total += (item[:price].to_i * item[:quantity])
+    end
+
+    formatted_price(total)
   end
 end
 

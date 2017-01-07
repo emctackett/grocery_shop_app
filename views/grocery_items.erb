@@ -1,4 +1,6 @@
 <h2>Build Your Grocery List</h2>
+
+<div><h3>Shop Available Items</h3></div>
 <ul>
   <% @grocery_items.each do |item, price| %>
     <li>
@@ -12,3 +14,7 @@
     </li>
   <% end %>
 </ul>
+
+<% content_for :header_links do %>
+  <a href="/list">View Your List</a>
+<% end %>
