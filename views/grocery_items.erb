@@ -1,0 +1,14 @@
+<h2>Build Your Grocery List</h2>
+<ul>
+  <% @grocery_items.each do |item, price| %>
+    <li>
+      <%= item %>
+      <div>$<%= formatted_price(price) %></div>
+      <div>
+        <form action="/add/<%= item %>/<%= formatted_price(price) %>" method="post">
+          <button type="submit">Add To List</button>
+        </form>
+      </div>
+    </li>
+  <% end %>
+</ul>

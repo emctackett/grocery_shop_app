@@ -1,0 +1,12 @@
+<h2>Your Grocery List</h2>
+<ul>
+  <% @list.each do |item| %>
+    <li>
+      <p>
+        <div><%= item[:name] %></div>
+        <div>Price: $<%= item[:price] %></div>
+        <div>Quantity: <%= item[:quantity] %></div>
+      </p>
+    </li>
+  <% end %>
+</ul>
