@@ -1,11 +1,24 @@
 <h2>Your Grocery List</h2>
 <ul>
-  <% @list.each do |item| %>
+  <% @list.sort_by { |item| item[:name] }.each do |item| %>
     <li>
       <p>
-        <div><%= item[:name] %></div>
-        <div>Price: $<%= item[:price] %></div>
-        <div>Quantity: <%= item[:quantity] %></div>
+        <div><strong><%= item[:name] %></strong></div>
+        <div><em>Price: $<%= item[:price] %></em></div>
+        <div><em>Quantity: <%= item[:quantity] %></em></div>
+
+        <form action="/increase/<%= item[:name] %>" method="post">
+          <button type="submit">Increase Quantity</button>
+        </form>
+
+        <form action="/decrease/<%= item[:name] %>" method="post">
+          <button type="submit">Decrease Quantity</button>
+        </form>
+
+        <form action="/delete/<%= item[:name] %>" method="post">
+          <button type="submit">Delete</button>
+        </form>
+
       </p>
     </li>
   <% end %>

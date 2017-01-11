@@ -1,7 +1,14 @@
 <html>
   <title>Grocery List</title>
+  <link href="/grocery_shop.css" rel="stylesheet" type="text/css" />
   <header><%= yield_content :header_links %></header>
   <body>
+    <% if session[:message] %>
+      <div>
+        <p class="message"><%= session.delete(:message) %></p>
+      </div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
