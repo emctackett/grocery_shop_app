@@ -1,0 +1,26 @@
+<h2>Select a Meal to add ingredients to your shopping List</h2>
+
+<ul>
+  <% @meals.each do |meal| %>
+    <li>
+      <%= meal[0] %>
+        <ul>
+          <% meal[1].each do |ingredient, price| %>
+            <li>
+              <%= ingredient %>, $<%= formatted_price(price) %>
+            </li>
+          <% end %>
+        </ul>
+    </li>
+    <div>
+      <form action="/add/meal/<%= meal[0] %>" method="post">
+        <button type="submit">Add Ingredients to List</button>
+      </form>
+    </div>
+  <% end %>
+</ul>
+
+<% content_for :header_links do %>
+  <p><a href="/list">View Your List</a></p>
+  <p><a href="/shop">Back to Shop by Available Item</a></p>
+<% end %>

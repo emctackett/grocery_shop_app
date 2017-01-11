@@ -62,6 +62,25 @@ get "/shop" do
   erb :grocery_items
 end
 
+# add meal ingredients to list
+post "/add/meal/:meal_name" do
+  meals = YAML.load_file("meals.yaml")
+  meal = meals.select { |meal_name| meal_name == params[:meal_name] }
+
+  meal.each_value do |ingredients|
+    ingredients.each do |ingredient, price|
+      if list_include?(ingredient)
+        increase_quantity(ingredient)
+      else
+        @list << { name: ingredient, price: formatted_price(price), quantity: 1 }
+      end
+    end
+  end
+
+  session[:message] = "#{params[:meal_name]} ingredients added."
+  redirect "/meals"
+end
+
 # add item to shopping list from item avail page
 post "/add/:item/:price" do
   if list_include?(params[:item])
@@ -95,11 +114,26 @@ post "/decrease/:item" do
   redirect "/list"
 end
 
+# delete all items from list
+post "/delete/all" do
+  @list.clear
+
+  session[:message] = "All items deleted from list."
+  redirect "/list"
+end
+
 # delete all of item from list
 post "/delete/:item" do
   delete_item_from_list(params[:item])
   session[:message] = "Item deleted."
   redirect "/list"
+end
+
+# shop by meals page
+get "/meals" do
+  @meals = YAML.load_file("meals.yaml").sort_by {|k,_| k }
+
+  erb :meals
 end
 
 

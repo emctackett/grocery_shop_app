@@ -28,6 +28,13 @@
   <p><strong>Total Cost: $<%= calculate_total_cost %></strong></p>
 </div>
 
+<div>
+  <form action="delete/all" method="post">
+    <button type="submit">Delete All Items From List</button>
+  </form>
+</div>
+
 <% content_for :header_links do %>
-  <a href="/shop">Back to Shop Available Items</a>
+  <p><a href="/shop">Back to Shop Available Items</a></p>
+  <p><a href="/meals">Back to Shop by Meal</a></p>
 <% end %>

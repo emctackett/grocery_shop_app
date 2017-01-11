@@ -1,0 +1,24 @@
+---
+Tacos:
+  Beef: 8.00
+  Cheese: 4.00
+  Tortillas: 2.00
+  Lettuce: 2.00
+  Onion: 1.00
+Spaghetti:
+  Beef: 8.00
+  Sauce: 3.00
+  Noodles: 2.00
+  Cheese: 4.00
+Salad:
+  Lettuce: 2.00
+  Cucumber: 1.00
+  Croutons: 2.00
+  Cheese: 4.00
+Stew:
+  Beef: 8.00
+  Carrots: 2.00
+  Celery: 2.00
+  Onion: 1.00
+  Broth: 1.00
+  Potato: 1.00
